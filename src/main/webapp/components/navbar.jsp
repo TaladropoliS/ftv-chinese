@@ -17,7 +17,7 @@
             <ul class="navbar-nav ms-auto mb-2 mb-sm-0">
                 <li class="nav-item">
                     <% if (usuario != null) { %>
-                    <a class="nav-link active ms-5 ps-5"
+                    <a class="ms-5 btn btn-outline-primary"
                        href="${pageContext.request.contextPath}/GetHoroscopo?fecha_nacimiento=<%= fecha_nac %>">
                         Ver Tu Horóscopo
                         <jsp:include page="icons/letter-chinese.jsp"/>
@@ -40,6 +40,7 @@
                         <% } %>
                     </a>
                     <ul class="dropdown-menu me-auto">
+                        <% if (usuario == null) { %>
                         <li>
                             <a class="dropdown-item"
                                href="${pageContext.request.contextPath}/login.jsp">
@@ -52,6 +53,8 @@
                                 Register
                             </a>
                         </li>
+                        <% } %>
+                        <% if (usuario != null) { %>
                         <li>
                             <a class="dropdown-item"
                                href="${pageContext.request.contextPath}/GetHoroscopo?fecha_nacimiento=<%= fecha_nac %>">
@@ -68,6 +71,7 @@
                             <a class="dropdown-item"
                                href="${pageContext.request.contextPath}/CerrarSesion">logOut</a>
                         </li>
+                        <% } %>
                     </ul>
                 </li>
             </ul>
