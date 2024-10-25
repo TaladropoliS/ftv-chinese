@@ -1,13 +1,11 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: WAR
-  Date: 24-10-2024
-  Time: 14:16
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %><html>
+<%@ page import="com.ftv.modelo.Horoscopo" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
+<%
+    Horoscopo h = (Horoscopo) request.getAttribute("horoscopo");
+%>
 <head>
-    <title>Tu Horoscopo</title>
+    <title>My Horoscopo Chino</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
@@ -16,7 +14,26 @@
     <jsp:include page="components/navbar.jsp"/>
 </header>
 <main class="container min-vh-100">
-    <h3 class="text-center py-3">Tu Horóscopo</h3>
+    <h3 class="text-center py-3">Mi Horóscopo
+        <jsp:include page="components/icons/letter-chinese.jsp"/>
+    </h3>
+
+    <div class="col-md-4 card mx-auto text-center">
+        <div class="card-body">
+            <h5 class="card-title fw-bold">
+                <%= h.getAnimal() %>
+            </h5>
+            <p class="card-text">
+                <small class="text-body-secondary">
+                    Desde: <%= h.getFecha_inicio() %>
+                </small>
+                <small class="text-body-secondary">
+                    Hasta: <%= h.getFecha_fin() %>
+                </small>
+            </p>
+        </div>
+        <img src="<%= h.getUrl() %>" class="card-img-bottom" alt="<%= h.getAnimal() %>">
+    </div>
 
 </main>
 <jsp:include page="components/footer.jsp"/>

@@ -6,6 +6,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<% String errorMessage = (String) request.getAttribute("errorMessage"); %>
+
 <html>
 <head>
     <title>logIn</title>
@@ -19,8 +21,14 @@
 <main class="container min-vh-100">
     <h3 class="text-center py-3">LogIn</h3>
 
+    <% if (errorMessage != null) {%>
+    <div class="col-md-4 mx-auto alert alert-danger" role="alert">
+        <%= errorMessage %>
+    </div>
+    <% }%>
+
     <div class="col-md-4 card mx-auto">
-        <form class="p-3">
+        <form class="p-3" method="post" action="${pageContext.request.contextPath}/InicioSesion">
             <div class="form-floating mb-3">
                 <input type="text" class="form-control" id="floatingUsername" name="username" required>
                 <label for="floatingUsername">Username</label>

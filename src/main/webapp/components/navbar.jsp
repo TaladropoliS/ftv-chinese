@@ -1,4 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    String usuario = (String) request.getSession().getAttribute("usuario");
+    String fecha_nac = (String) request.getSession().getAttribute("fecha_nac");
+%>
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark" aria-label="Third navbar example">
     <div class="container-fluid px-md-5">
         <a class="navbar-brand" href="${pageContext.request.contextPath}/index.jsp">
@@ -12,18 +16,28 @@
         <div class="collapse navbar-collapse" id="navbarsExample03">
             <ul class="navbar-nav ms-auto mb-2 mb-sm-0">
                 <li class="nav-item">
-                    <a class="nav-link active ps-5" href="${pageContext.request.contextPath}/horoscopo.jsp">
-                        Tu Horóscopo
+                    <% if (usuario != null) { %>
+                    <a class="nav-link active ms-5 ps-5"
+                       href="${pageContext.request.contextPath}/GetHoroscopo?fecha_nacimiento=<%= fecha_nac %>">
+                        Ver Tu Horóscopo
                         <jsp:include page="icons/letter-chinese.jsp"/>
+                        <% if (fecha_nac != null) { %>
+                        <%= fecha_nac %>
+                        <%}%>
                     </a>
+                    <% } %>
                 </li>
             </ul>
-            <ul class="navbar-nav ms-auto mb-2 mb-sm-0">
+            <ul class="navbar-nav ms-auto mb-2 mb-sm-0 pe-5">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#"
                        data-bs-toggle="dropdown" aria-expanded="false">
                         <jsp:include page="icons/user.jsp"/>
-                        Username
+                        <% if (usuario != null) { %>
+                        <%= usuario %>
+                        <% } else { %>
+                        Loguéate
+                        <% } %>
                     </a>
                     <ul class="dropdown-menu me-auto">
                         <li>
@@ -40,7 +54,7 @@
                         </li>
                         <li>
                             <a class="dropdown-item"
-                               href="${pageContext.request.contextPath}/horoscopo.jsp">
+                               href="${pageContext.request.contextPath}/GetHoroscopo?fecha_nacimiento=<%= fecha_nac %>">
                                 My Horóscopo
                             </a>
                         </li>
@@ -52,7 +66,7 @@
                         </li>
                         <li>
                             <a class="dropdown-item"
-                               href="#">logOut</a>
+                               href="${pageContext.request.contextPath}/CerrarSesion">logOut</a>
                         </li>
                     </ul>
                 </li>

@@ -10,14 +10,14 @@ public class Usuario {
     private String nombre, username, email, password, animal;
     private String fecha_nacimiento;
 
-//    public Optional<String> getUsuario(HttpServletRequest request) {
-//        HttpSession session = request.getSession();
-//        String usuario = (String) session.getAttribute("usuario");
-//        if (usuario != null) {
-//            return Optional.of(usuario);
-//        }
-//        return Optional.empty();
-//    }
+    public static Optional<String> getUsuario(HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        String usuario = (String) session.getAttribute("usuario");
+        if (usuario != null) {
+            return Optional.of(usuario);
+        }
+        return Optional.empty();
+    }
 
     public Usuario(Long id, String nombre, String username, String email, String fecha_nacimiento, String password, String animal) {
         this.id = id;

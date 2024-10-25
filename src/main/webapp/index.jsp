@@ -1,10 +1,6 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: WAR
-  Date: 24-10-2024
-  Time: 13:14
-  To change this template use File | Settings | File Templates.
---%>
+<%
+    String usuario = (String) request.getSession().getAttribute("usuario");
+%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -16,7 +12,12 @@
 <header>
     <jsp:include page="components/navbar.jsp"/>
 </header>
-<main class="container min-vh-100">
+<main class="container min-vh-100 text-center">
+    <h4>
+        <% if (usuario != null) { %>
+        <%= usuario %>
+        <% }%>
+    </h4>
     <div class="text-center pt-3">
         <img class="img-fluid px-md-5" alt="horóscopo"
              src="https://fernandotaladriz.com/03-img-h-ch/Horoscopo.png">
