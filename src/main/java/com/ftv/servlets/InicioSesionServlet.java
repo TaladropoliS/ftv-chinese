@@ -21,11 +21,11 @@ public class InicioSesionServlet extends HttpServlet {
         String u = req.getParameter("username");
         String c = req.getParameter("password");
 
-        System.out.println("InicioSesionServlet " + u + " " + c);
+//        System.out.println("InicioSesionServlet " + u + " " + c);
 
         String sql = "SELECT * FROM usuarios WHERE username = '" + u + "' AND password = '" + c + "';";
 
-        System.out.println("sql " + sql);
+//        System.out.println("sql " + sql);
 
         try (Statement st = ConexionBD.getInstance().createStatement();
              ResultSet rs = st.executeQuery(sql)
@@ -34,6 +34,7 @@ public class InicioSesionServlet extends HttpServlet {
                 HttpSession session = req.getSession();
                 session.setAttribute("usuario", rs.getString("username"));
                 session.setAttribute("fecha_nac", rs.getString("fecha_nacimiento"));
+                session.setAttribute("id", rs.getString("id"));
                 resp.sendRedirect(req.getContextPath() + "/index.jsp");
             } else {
                 req.setAttribute("errorMessage", "Error en los datos ingresados, intenta nuevamente");

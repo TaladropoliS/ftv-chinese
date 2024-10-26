@@ -24,15 +24,15 @@ public class ModificarUsuarioServlet extends HttpServlet {
         String password = req.getParameter("password");
         String animal = req.getParameter("animal");
 
-        System.out.println(
-                Long.parseLong(req.getParameter("id")) + " " +
-                        req.getParameter("nombre") + " " +
-                        req.getParameter("username") + " " +
-                        req.getParameter("email") + " " +
-                        req.getParameter("fecha_nacimiento") + " " +
-                        req.getParameter("password") + " " +
-                        req.getParameter("animal")
-        );
+//        System.out.println(
+//                Long.parseLong(req.getParameter("id")) + " " +
+//                        req.getParameter("nombre") + " " +
+//                        req.getParameter("username") + " " +
+//                        req.getParameter("email") + " " +
+//                        req.getParameter("fecha_nacimiento") + " " +
+//                        req.getParameter("password") + " " +
+//                        req.getParameter("animal")
+//        );
 
         Usuario usuario = new Usuario(id, nombre, username, email, fecha_nacimiento, password, animal);
         UsuarioDAO usuarioDAO = new UsuarioDAO();

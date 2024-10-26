@@ -27,7 +27,7 @@ public class CrearUsuarioServlet extends HttpServlet {
         Boolean respuesta = usuarioDAO.add(nuevoUsuario);
 
         if(respuesta){
-            resp.sendRedirect("/ftv-chinese/Usuarios");
+            resp.sendRedirect("/ftv-chinese/login.jsp");
         }else{
             resp.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Error al agregar el Usuario");
         }

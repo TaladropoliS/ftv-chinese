@@ -89,8 +89,8 @@ public class UsuarioDAO implements IUDAO {
     @Override
     public Boolean edit(Usuario usuario) {
 
-        System.out.println("password" + usuario.getPassword());
-        System.out.println("usuario" + usuario.getFecha_nacimiento());
+//        System.out.println("password" + usuario.getPassword());
+//        System.out.println("usuario" + usuario.getFecha_nacimiento());
 
         String sql = "UPDATE usuarios SET nombre = '" + usuario.getNombre() +
                 "', username = '" + usuario.getUsername() + "'," +
@@ -100,7 +100,7 @@ public class UsuarioDAO implements IUDAO {
                 "animal = '" + usuario.getAnimal() +
                 "' WHERE id = " + usuario.getId();
 
-        System.out.println("sql" + sql);
+//        System.out.println("sql" + sql);
 
         try (Statement st = conectar().createStatement()) {
             st.execute(sql);

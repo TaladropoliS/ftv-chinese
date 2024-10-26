@@ -22,7 +22,7 @@ public class HoroscopoDAO implements IHDAO {
         Optional<Horoscopo> optionalHoroscopo = Optional.empty();
         String sql = "SELECT * FROM horoscopo WHERE '" + fecha + "' BETWEEN fecha_inicio AND fecha_fin;";
 
-        System.out.println("sql Horoscopo ByDate " + sql);
+//        System.out.println("sql Horoscopo ByDate " + sql);
 
         try (Statement st = conectar().createStatement();
              ResultSet rs = st.executeQuery(sql)) {

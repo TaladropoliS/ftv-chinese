@@ -3,7 +3,7 @@
     String usuario = (String) request.getSession().getAttribute("usuario");
     String fecha_nac = (String) request.getSession().getAttribute("fecha_nac");
 %>
-<nav class="navbar navbar-expand-sm navbar-dark bg-dark" aria-label="Third navbar example">
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed-top" aria-label="Third navbar example">
     <div class="container-fluid px-md-5">
         <a class="navbar-brand" href="${pageContext.request.contextPath}/index.jsp">
             <jsp:include page="icons/yin-yang.jsp"/>
@@ -42,24 +42,42 @@
                     <ul class="dropdown-menu me-auto">
                         <% if (usuario == null) { %>
                         <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li>
                             <a class="dropdown-item"
                                href="${pageContext.request.contextPath}/login.jsp">
                                 LogIn
                             </a>
                         </li>
                         <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li>
                             <a class="dropdown-item"
                                href="${pageContext.request.contextPath}/user-register.jsp">
-                                Register
+                                Regístrate
                             </a>
                         </li>
                         <% } %>
                         <% if (usuario != null) { %>
                         <li>
                             <a class="dropdown-item"
+                               href="${pageContext.request.contextPath}/index.jsp">
+                                Inicio
+                            </a>
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li>
+                            <a class="dropdown-item"
                                href="${pageContext.request.contextPath}/GetHoroscopo?fecha_nacimiento=<%= fecha_nac %>">
                                 My Horóscopo
                             </a>
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider">
                         </li>
                         <li>
                             <a class="dropdown-item"
@@ -68,8 +86,13 @@
                             </a>
                         </li>
                         <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li>
                             <a class="dropdown-item"
-                               href="${pageContext.request.contextPath}/CerrarSesion">logOut</a>
+                               href="${pageContext.request.contextPath}/CerrarSesion">
+                                logOut
+                            </a>
                         </li>
                         <% } %>
                     </ul>

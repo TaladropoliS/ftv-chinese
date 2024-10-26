@@ -3,18 +3,20 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
     List<Usuario> usuarios = (List<Usuario>) request.getAttribute("usuarios");
+    String id_request_user = (String) request.getSession().getAttribute("id");
 %>
 <html>
 <head>
     <title>Usuarios</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="assets/style.css" rel="stylesheet">
 </head>
 <body>
 <header>
     <jsp:include page="components/navbar.jsp"/>
 </header>
-<main class="container min-vh-100">
+<main id="main" class="container min-vh-100">
     <h3 class="text-center py-3">Usuarios</h3>
 
     <table class="table table-striped table-hover">
@@ -35,20 +37,32 @@
                 for (Usuario u : usuarios) {
         %>
         <tr>
-            <td><%= u.getId() %></td>
-            <td><%= u.getNombre() %></td>
-            <td><%= u.getUsername() %></td>
-            <td><%= u.getEmail() %></td>
-            <td><%= u.getFecha_nacimiento() %></td>
-            <td><%= u.getAnimal() %></td>
+            <td><%= u.getId() %>
+            </td>
+            <td><%= u.getNombre() %>
+            </td>
+            <td><%= u.getUsername() %>
+            </td>
+            <td><%= u.getEmail() %>
+            </td>
+            <td><%= u.getFecha_nacimiento() %>
+            </td>
             <td>
+                <% if (u.getAnimal() != null) { u.getAnimal();}%>
+            </td>
+            <td>
+                <% if (u.getId() != null && id_request_user != null) {%>
+                <% if (u.getId() == Integer.parseInt(id_request_user)) {%>
                 <a href="${pageContext.request.contextPath}/GetUsuario?id=<%= u.getId() %>"
                    class="btn btn-outline-warning me-md-3">
                     <jsp:include page="components/icons/edit.jsp"/>
                 </a>
-                <a href="#" class="btn btn-outline-danger">
+                <a href="${pageContext.request.contextPath}/EliminarUsuario?id=<%= id_request_user %>"
+                   class="btn btn-outline-danger">
                     <jsp:include page="components/icons/delete.jsp"/>
                 </a>
+                <%}%>
+                <%}%>
             </td>
         </tr>
         <%
