@@ -33,7 +33,7 @@
                     <label for="floatingUsername">Username</label>
                 </div>
                 <div class="col-2 form-floating mb-3">
-                    <input type="text" class="form-control" id="floatingAnimal" name="id" readonly
+                    <input type="text" class="form-control" id="floatingAnimal" name="animal" readonly
                            value="<%= u.getAnimal() %>">
                     <label for="floatingAnimal">Id</label>
                 </div>

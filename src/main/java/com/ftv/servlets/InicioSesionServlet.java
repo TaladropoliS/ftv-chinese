@@ -21,11 +21,7 @@ public class InicioSesionServlet extends HttpServlet {
         String u = req.getParameter("username");
         String c = req.getParameter("password");
 
-//        System.out.println("InicioSesionServlet " + u + " " + c);
-
         String sql = "SELECT * FROM usuarios WHERE username = '" + u + "' AND password = '" + c + "';";
-
-//        System.out.println("sql " + sql);
 
         try (Statement st = ConexionBD.getInstance().createStatement();
              ResultSet rs = st.executeQuery(sql)
