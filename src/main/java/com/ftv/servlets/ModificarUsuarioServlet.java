@@ -29,7 +29,7 @@ public class ModificarUsuarioServlet extends HttpServlet {
         Boolean respuesta = usuarioDAO.edit(usuario);
 
         if (respuesta) {
-            resp.sendRedirect("/ftv-chinese/UsuariosList");
+            resp.sendRedirect("/ftv-chinese/UsuariosList?updateUser=ok");
         } else {
             resp.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Error al editar el Usuario");
         }

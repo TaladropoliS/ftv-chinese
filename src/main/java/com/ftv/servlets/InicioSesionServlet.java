@@ -39,7 +39,6 @@ public class InicioSesionServlet extends HttpServlet {
             } else {
                 req.setAttribute("errorMessage", "Error, intenta nuevamente");
                 req.getRequestDispatcher("/login.jsp").forward(req, resp);
-//                resp.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Error en MySql. No existe el usuario en la BD.");
             }
         } catch (SQLException | ClassNotFoundException e) {
             resp.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Error: " + e.getMessage());

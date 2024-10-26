@@ -23,7 +23,6 @@ public class CerrarSesionServlet extends HttpServlet {
             session.invalidate();
         }
         String deletedUser = req.getParameter("deletedUser");
-        System.out.println("deletedUser: " + deletedUser);
         if(Objects.equals(deletedUser, "ok")){
             req.setAttribute("deletedMessage", "Usuario eliminado.");
         }

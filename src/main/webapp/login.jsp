@@ -29,7 +29,7 @@
     </div>
     <% }%>
     <% if (deletedMessage != null) {%>
-    <div class="col-md-4 mx-auto alert alert-success" role="alert">
+    <div class="col-md-4 mx-auto alert alert-warning" role="alert">
         <%= deletedMessage %>
     </div>
     <% }%>

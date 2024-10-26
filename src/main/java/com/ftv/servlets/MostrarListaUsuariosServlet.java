@@ -10,6 +10,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Objects;
 
 @WebServlet("/UsuariosList")
 public class MostrarListaUsuariosServlet extends HttpServlet {
@@ -19,12 +20,11 @@ public class MostrarListaUsuariosServlet extends HttpServlet {
         UsuarioDAO usuarioDAO = new UsuarioDAO();
         List<Usuario> usuarios = usuarioDAO.listar();
 
-//        System.out.println("Número de usuarios obtenidos: " + usuarios.size());
-
+        String updateUser = req.getParameter("updateUser");
+        if(Objects.equals(updateUser, "ok")){
+            req.setAttribute("updatedMessage", "Usuario actualizado.");
+        }
         req.setAttribute("usuarios", usuarios);
-
-//        req.setAttribute("mensaje", "Prueba de paso de datos al JSP");
-
         getServletContext().getRequestDispatcher("/user-list.jsp").forward(req, resp);
     }
 }

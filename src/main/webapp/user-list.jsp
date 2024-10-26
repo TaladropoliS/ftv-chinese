@@ -4,6 +4,7 @@
 <%
     List<Usuario> usuarios = (List<Usuario>) request.getAttribute("usuarios");
     String id_request_user = (String) request.getSession().getAttribute("id");
+    String updatedMessage = (String) request.getAttribute("updatedMessage");
 %>
 <html lang="es" data-bs-theme="dark">
 <head>
@@ -19,6 +20,12 @@
 </header>
 <main id="main" class="container min-vh-100">
     <h3 class="text-center py-3">Usuarios</h3>
+
+    <% if (updatedMessage != null) {%>
+    <div class="col-md-4 mx-auto alert alert-info" role="alert">
+        <%= updatedMessage %>
+    </div>
+    <% }%>
 
     <table class="table table-striped table-hover">
         <thead>
