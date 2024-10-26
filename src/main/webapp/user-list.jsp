@@ -66,11 +66,11 @@
                 <% if (u.getId() != null && id_request_user != null) {%>
                 <% if (u.getId() == Integer.parseInt(id_request_user)) {%>
                 <a href="${pageContext.request.contextPath}/GetUsuario?id=<%= u.getId() %>"
-                   class="btn btn-outline-warning me-md-3">
+                   class="btn btn-outline-warning btn-sm me-md-3">
                     <jsp:include page="components/icons/edit.jsp"/>
                 </a>
                 <a href="${pageContext.request.contextPath}/EliminarUsuario?id=<%= id_request_user %>"
-                   class="btn btn-outline-danger">
+                   class="btn btn-outline-danger btn-sm">
                     <jsp:include page="components/icons/delete.jsp"/>
                 </a>
                 <%}%>

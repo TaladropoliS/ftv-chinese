@@ -21,7 +21,7 @@
     </h3>
 
     <div class="col-md-4 card mx-auto text-center">
-        <div class="card-body">
+        <div class="card-header">
             <h5 class="card-title fw-bold">
                 <%= h.getAnimal() %>
             </h5>
@@ -34,7 +34,10 @@
                 </small>
             </p>
         </div>
-        <img src="<%= h.getUrl() %>" class="card-img-bottom" alt="<%= h.getAnimal() %>">
+        <div class="card-body px-5">
+            <img src="<%= h.getUrl() %>" class="card-img-bottom rounded-circle"
+                 alt="<%= h.getAnimal() %>">
+        </div>
     </div>
 
 </main>
