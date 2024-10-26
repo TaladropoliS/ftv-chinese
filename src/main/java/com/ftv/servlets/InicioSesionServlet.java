@@ -37,7 +37,7 @@ public class InicioSesionServlet extends HttpServlet {
                 session.setAttribute("id", rs.getString("id"));
                 resp.sendRedirect(req.getContextPath() + "/index.jsp");
             } else {
-                req.setAttribute("errorMessage", "Error en los datos ingresados, intenta nuevamente");
+                req.setAttribute("errorMessage", "Error, intenta nuevamente");
                 req.getRequestDispatcher("/login.jsp").forward(req, resp);
 //                resp.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Error en MySql. No existe el usuario en la BD.");
             }

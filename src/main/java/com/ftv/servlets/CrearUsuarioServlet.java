@@ -22,12 +22,15 @@ public class CrearUsuarioServlet extends HttpServlet {
         String password = req.getParameter("password");
         String animal = req.getParameter("animal");
 
+
+
         Usuario nuevoUsuario = new Usuario(null, nombre, username, email, fecha_nacimiento, password, animal);
         UsuarioDAO usuarioDAO = new UsuarioDAO();
         Boolean respuesta = usuarioDAO.add(nuevoUsuario);
 
         if(respuesta){
-            resp.sendRedirect("/ftv-chinese/login.jsp");
+            req.setAttribute("registerMessage", "Usuario registrado ok, Ingresa con tus datos.");
+            req.getRequestDispatcher("/login.jsp").forward(req, resp);
         }else{
             resp.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Error al agregar el Usuario");
         }

@@ -5,12 +5,13 @@
     List<Usuario> usuarios = (List<Usuario>) request.getAttribute("usuarios");
     String id_request_user = (String) request.getSession().getAttribute("id");
 %>
-<html>
+<html lang="es" data-bs-theme="dark">
 <head>
     <title>Usuarios</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link href="assets/style.css" rel="stylesheet">
+    <link href="assets/img/favicon.png" type="image/x-icon" rel="icon">
 </head>
 <body>
 <header>
@@ -48,7 +49,11 @@
             <td><%= u.getFecha_nacimiento() %>
             </td>
             <td>
-                <% if (u.getAnimal() != null) { u.getAnimal();}%>
+                <% if (u.getAnimal() != null) {%>
+                <%= u.getAnimal() %>
+                <%}else { %>
+                --
+                <%}%>
             </td>
             <td>
                 <% if (u.getId() != null && id_request_user != null) {%>

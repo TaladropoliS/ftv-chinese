@@ -18,7 +18,6 @@ public class BuscarUsuarioServlet extends HttpServlet {
         String id = req.getParameter("id");
 
         UsuarioDAO usuarioDAO = new UsuarioDAO();
-
         Optional<Usuario> usuario = usuarioDAO.byId(Long.parseLong(id));
 
         if (usuario.isPresent()) {

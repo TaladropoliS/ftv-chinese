@@ -2,8 +2,10 @@
 <%
     String usuario = (String) request.getSession().getAttribute("usuario");
     String fecha_nac = (String) request.getSession().getAttribute("fecha_nac");
+    String id_request_user = (String) request.getSession().getAttribute("id");
 %>
-<nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed-top" aria-label="Third navbar example">
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed-top border border-bottom"
+     aria-label="Third navbar example">
     <div class="container-fluid px-md-5">
         <a class="navbar-brand" href="${pageContext.request.contextPath}/index.jsp">
             <jsp:include page="icons/yin-yang.jsp"/>
@@ -17,8 +19,8 @@
             <ul class="navbar-nav ms-auto mb-2 mb-sm-0">
                 <li class="nav-item">
                     <% if (usuario != null) { %>
-                    <a class="ms-5 btn btn-outline-primary"
-                       href="${pageContext.request.contextPath}/GetHoroscopo?fecha_nacimiento=<%= fecha_nac %>">
+                    <a class="ms-5 btn btn-outline-primary btn-sm"
+                       href="${pageContext.request.contextPath}/GetHoroscopo?fecha_nacimiento=<%= fecha_nac %>&id=<%= id_request_user %>">
                         Ver Tu Horóscopo
                         <jsp:include page="icons/letter-chinese.jsp"/>
                         <% if (fecha_nac != null) { %>
@@ -36,18 +38,18 @@
                         <% if (usuario != null) { %>
                         <%= usuario %>
                         <% } else { %>
-                        Loguéate
+                        Ingresar
                         <% } %>
                     </a>
                     <ul class="dropdown-menu me-auto">
                         <% if (usuario == null) { %>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
+<%--                        <li>--%>
+<%--                            <hr class="dropdown-divider">--%>
+<%--                        </li>--%>
                         <li>
                             <a class="dropdown-item"
                                href="${pageContext.request.contextPath}/login.jsp">
-                                LogIn
+                                Entrar
                             </a>
                         </li>
                         <li>
@@ -56,7 +58,7 @@
                         <li>
                             <a class="dropdown-item"
                                href="${pageContext.request.contextPath}/user-register.jsp">
-                                Regístrate
+                                Registrarse
                             </a>
                         </li>
                         <% } %>
@@ -72,7 +74,7 @@
                         </li>
                         <li>
                             <a class="dropdown-item"
-                               href="${pageContext.request.contextPath}/GetHoroscopo?fecha_nacimiento=<%= fecha_nac %>">
+                               href="${pageContext.request.contextPath}/GetHoroscopo?fecha_nacimiento=<%= fecha_nac %>&id=<%= id_request_user %>">
                                 My Horóscopo
                             </a>
                         </li>
@@ -91,7 +93,7 @@
                         <li>
                             <a class="dropdown-item"
                                href="${pageContext.request.contextPath}/CerrarSesion">
-                                logOut
+                                Salir
                             </a>
                         </li>
                         <% } %>

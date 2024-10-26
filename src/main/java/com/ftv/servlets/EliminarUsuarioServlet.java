@@ -18,7 +18,7 @@ public class EliminarUsuarioServlet extends HttpServlet {
         UsuarioDAO usuarioDAO = new UsuarioDAO();
         Boolean respuesta = usuarioDAO.delete(Long.parseLong(id));
         if(respuesta){
-            resp.sendRedirect("/ftv-chinese/CerrarSesion");
+            resp.sendRedirect("/ftv-chinese/CerrarSesion?deletedUser=ok");
         }else {
             resp.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Error al eliminar el Usuario");
         }
