@@ -21,17 +21,21 @@
     <div class="col-md-8 card mx-auto">
         <form class="p-3" method="post" action="${pageContext.request.contextPath}/ModificarUsuario"
               onsubmit="return validatePassword()">
-            <%--            <input type="text" name="password" hidden value="<%= u.getPassword() %>">--%>
             <div class="row row-cols-2">
-                <div class="col form-floating mb-3">
+                <div class="col-5 form-floating mb-3">
                     <input type="text" class="form-control" id="floatingName" name="nombre" required
                            value="<%= u.getNombre() %>">
                     <label for="floatingName">Nombre</label>
                 </div>
-                <div class="col form-floating mb-3">
+                <div class="col-5 form-floating mb-3">
                     <input type="text" class="form-control" id="floatingUsername" name="username" required
                            value="<%= u.getUsername() %>">
                     <label for="floatingUsername">Username</label>
+                </div>
+                <div class="col-2 form-floating mb-3">
+                    <input type="text" class="form-control" id="floatingAnimal" name="id" readonly
+                           value="<%= u.getAnimal() %>">
+                    <label for="floatingAnimal">Id</label>
                 </div>
             </div>
             <div class="row row-cols-3">
